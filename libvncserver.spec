@@ -1,7 +1,7 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
 %define version     0.8.2
-%define release     %mkrel 2
+%define release     %mkrel 3
 %define major       %{version}
 %define libname     %mklibname vncserver %{major}
 
@@ -14,6 +14,7 @@ License:    GPL
 URL:        http://sourceforge.net/projects/libvncserver/
 Source:     http://downloads.sourceforge.net/libvncserver/%{up_name}-%{version}.tar.bz2
 Patch:      libvncserver-0.8.2.libtool.patch
+Patch2:		LibVNCServer-0.8.2-fix-header-c++.patch
 BuildRequires:  libx11-devel
 BuildRequires:  libxdamage-devel
 BuildRequires:  libxext-devel
@@ -89,6 +90,7 @@ into a versatile and performant while still easy to use program.
 %prep
 %setup -q -n %{up_name}-%{version}
 %patch -p 1 -b libtool
+%patch2 -p1 -b .fix_header_c++
 
 %build
 autoreconf-2.5x -i
