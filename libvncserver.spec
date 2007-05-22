@@ -1,8 +1,8 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
-%define version     0.8.2
-%define release     %mkrel 3
-%define major       %{version}
+%define version     0.9
+%define release     %mkrel 1
+%define major       0
 %define libname     %mklibname vncserver %{major}
 
 Name:       %{name}
@@ -12,9 +12,7 @@ Summary:    An easy API to write one's own VNC server
 Group:      System/Libraries
 License:    GPL
 URL:        http://sourceforge.net/projects/libvncserver/
-Source:     http://downloads.sourceforge.net/libvncserver/%{up_name}-%{version}.tar.bz2
-Patch:      libvncserver-0.8.2.libtool.patch
-Patch2:		LibVNCServer-0.8.2-fix-header-c++.patch
+Source:     http://downloads.sourceforge.net/libvncserver/%{up_name}-%{version}.tar.gz
 BuildRequires:  libx11-devel
 BuildRequires:  libxdamage-devel
 BuildRequires:  libxext-devel
@@ -25,9 +23,6 @@ BuildRequires:  libxfixes-devel
 BuildRequires:  openssl-devel
 BuildRequires:  zlib-devel
 BuildRequires:  jpeg-devel
-BuildRequires:  libtool
-BuildRequires:  automake
-BuildRequires:  autoconf2.5
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
@@ -89,11 +84,8 @@ into a versatile and performant while still easy to use program.
 
 %prep
 %setup -q -n %{up_name}-%{version}
-%patch -p 1 -b libtool
-%patch2 -p1 -b .fix_header_c++
 
 %build
-autoreconf-2.5x -i
 %configure
 %make
 
@@ -109,7 +101,7 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
-%{_libdir}/*-%{major}.so
+%{_libdir}/*-%{major}.so.*
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
@@ -119,7 +111,6 @@ rm -rf %{buildroot}
 %{_libdir}/*.la
 %{_bindir}/libvncserver-config
 %multiarch %{multiarch_bindir}/libvncserver-config
-%exclude %{_libdir}/*-%{major}.so
 
 %files -n linuxvnc
 %defattr(-,root,root)
@@ -131,5 +122,3 @@ rm -rf %{buildroot}
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %{_bindir}/x11vnc
 %{_mandir}/man1/x11vnc.1*
-
-
