@@ -101,7 +101,7 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
-%{_libdir}/*-%{major}.so.*
+%{_libdir}/*.so.*
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
