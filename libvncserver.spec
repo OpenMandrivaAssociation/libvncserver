@@ -1,7 +1,7 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
 %define version     0.9
-%define release     %mkrel 1
+%define release     %mkrel 2
 %define major       0
 %define libname     %mklibname vncserver %{major}
 
@@ -58,17 +58,6 @@ Provides:	%{name}-devel = %{version}-%{release}
 %description -n %{libname}-devel
 Static libraries and header files for LibVNCServer.
 
-%package -n x11vnc
-Summary:      VNC server to monitor a X11 session
-Group:        Networking/Remote access
-
-%description -n x11vnc
-With x11vnc you can export your currently running X11 session to any VNC
-client. You do not have to launch another session as the regular VNC server
-does. So it's very useful, if you want to move to another computer without
-having to log out, or to help a distant colleague to solve a problem with their
-desktop.
-
 %package -n linuxvnc
 Summary:      VNC server to monitor a text session
 Group:        Networking/Remote access
@@ -93,6 +82,10 @@ into a versatile and performant while still easy to use program.
 rm -rf %{buildroot}
 %makeinstall_std
 
+# remove x11vnc files
+rm -f %{buildroot}%{_bindir}/x11vnc
+rm -f %{buildroot}%{_mandir}/man1/x11vnc.1*
+
 %multiarch_binaries %{buildroot}%{_bindir}/libvncserver-config
 
 %clean
@@ -116,9 +109,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %{_bindir}/LinuxVNC
-
-%files -n x11vnc
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
-%{_bindir}/x11vnc
-%{_mandir}/man1/x11vnc.1*
