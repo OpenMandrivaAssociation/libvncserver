@@ -1,7 +1,7 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
-%define version     0.9
-%define release     %mkrel 2
+%define version     0.9.1
+%define release     %mkrel 1
 %define major       0
 %define libname     %mklibname vncserver %{major}
 
@@ -75,16 +75,12 @@ into a versatile and performant while still easy to use program.
 %setup -q -n %{up_name}-%{version}
 
 %build
-%configure
+%configure2_5x
 %make
 
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-# remove x11vnc files
-rm -f %{buildroot}%{_bindir}/x11vnc
-rm -f %{buildroot}%{_mandir}/man1/x11vnc.1*
 
 %multiarch_binaries %{buildroot}%{_bindir}/libvncserver-config
 
