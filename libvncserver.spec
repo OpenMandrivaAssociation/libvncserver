@@ -23,7 +23,6 @@ BuildRequires:  libxfixes-devel
 BuildRequires:  openssl-devel
 BuildRequires:  zlib-devel
 BuildRequires:  jpeg-devel
-BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
 LibVNCServer makes writing a VNC server (or more correctly, a program
