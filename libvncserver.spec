@@ -1,9 +1,10 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
-%define version     0.9.1
-%define release     %mkrel 2
+%define version     0.9.7
+%define release     %mkrel 1
 %define major       0
 %define libname     %mklibname vncserver %{major}
+%define develname   %mklibname -d vncserver
 
 Name:       %{name}
 Version:    %{version}
@@ -13,6 +14,7 @@ Group:      System/Libraries
 License:    GPL
 URL:        http://sourceforge.net/projects/libvncserver/
 Source:     http://downloads.sourceforge.net/libvncserver/%{up_name}-%{version}.tar.gz
+Patch:      LibVNCServer-0.9.7-fix-format-errors.patch
 BuildRequires:  libx11-devel
 BuildRequires:  libxdamage-devel
 BuildRequires:  libxext-devel
@@ -49,13 +51,14 @@ ORL, later AT&T research labs in UK.
 It hides the programmer from the tedious task of managing clients and
 compression schemata.
 
-%package -n %{libname}-devel
+%package -n %{develname}
 Summary:	Headers for developing programs that will use %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:  %{libname}-devel
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Static libraries and header files for LibVNCServer.
 
 %package -n linuxvnc
@@ -73,6 +76,7 @@ into a versatile and performant while still easy to use program.
 
 %prep
 %setup -q -n %{up_name}-%{version}
+%patch -p 1
 
 %build
 %configure2_5x
@@ -92,7 +96,7 @@ rm -rf %{buildroot}
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %{_libdir}/*.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/rfb
 %{_libdir}/*.a
