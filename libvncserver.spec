@@ -1,7 +1,7 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
 %define version     0.9.7
-%define release     %mkrel 3
+%define release     %mkrel 4
 %define major       0
 %define libname     %mklibname vncserver %{major}
 %define develname   %mklibname -d vncserver
