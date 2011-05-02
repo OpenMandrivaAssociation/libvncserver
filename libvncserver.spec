@@ -1,7 +1,7 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
 %define version     0.9.8
-%define release     %mkrel 1
+%define release     %mkrel 2
 %define major       0
 %define libname     %mklibname vncserver %{major}
 %define develname   %mklibname -d vncserver
@@ -103,7 +103,7 @@ rm -rf %{buildroot}
 %{_libdir}/*.so
 %{_libdir}/*.la
 %{_bindir}/libvncserver-config
-%multiarch %{multiarch_bindir}/libvncserver-config
+%{multiarch_bindir}/libvncserver-config
 %{_libdir}/pkgconfig/libvncclient.pc
 %{_libdir}/pkgconfig/libvncserver.pc
 
