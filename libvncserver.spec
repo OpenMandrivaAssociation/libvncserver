@@ -1,7 +1,7 @@
 %define name        libvncserver
 %define up_name     LibVNCServer
-%define version     0.9.8
-%define release     %mkrel 3
+%define version     0.9.9
+%define release     1
 %define major       0
 %define libname     %mklibname vncserver %{major}
 %define develname   %mklibname -d vncserver
@@ -14,7 +14,7 @@ Group:      System/Libraries
 License:    GPL
 URL:        http://sourceforge.net/projects/libvncserver/
 Source:     http://downloads.sourceforge.net/libvncserver/%{up_name}-%{version}.tar.gz
-Patch:      LibVNCServer-0.9.7-fix-format-errors.patch
+Patch0:      LibVNCServer-0.9.9-formatstr.patch
 BuildRequires:  libx11-devel
 BuildRequires:  libxdamage-devel
 BuildRequires:  libxext-devel
@@ -76,7 +76,7 @@ into a versatile and performant while still easy to use program.
 
 %prep
 %setup -q -n %{up_name}-%{version}
-#patch -p 1
+%patch0 -p 1
 
 %build
 %configure2_5x
@@ -109,4 +109,4 @@ rm -rf %{buildroot}
 %files -n linuxvnc
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
-%{_bindir}/LinuxVNC
+%{_bindir}/linuxvnc
