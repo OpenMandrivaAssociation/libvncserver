@@ -13,6 +13,7 @@ URL:		http://sourceforge.net/projects/libvncserver/
 Source:		http://downloads.sourceforge.net/libvncserver/%{up_name}-%{version}.tar.gz
 Patch0:		LibVNCServer-0.9.9-no_x11vnc.patch
 Patch1:		LibVNCServer-0.9.9-str-format.patch
+Patch2:		libvncserver-automake-1.13.patch
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xdamage)
 BuildRequires:	pkgconfig(xext)
@@ -23,6 +24,13 @@ BuildRequires:	pkgconfig(xfixes)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	zlib-devel
 BuildRequires:	jpeg-devel
+
+%track
+prog %name = {
+	url = http://sourceforge.net/projects/libvncserver/
+	version = %version
+	regex = LibVNCServer-(__VER__)\.tar\.gz
+}
 
 %description
 LibVNCServer makes writing a VNC server (or more correctly, a program
@@ -73,8 +81,7 @@ into a versatile and performant while still easy to use program.
 
 %prep
 %setup -q -n %{up_name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%apply_patches
 
 %build
 %configure2_5x --disable-static
