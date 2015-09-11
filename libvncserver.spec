@@ -6,15 +6,13 @@
 
 Summary:	An easy API to write one's own VNC server
 Name:		libvncserver
-Version:	0.9.9
-Release:	11
+Version:	0.9.10
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
-Url:		http://sourceforge.net/projects/libvncserver/
-Source0:	http://downloads.sourceforge.net/libvncserver/%{up_name}-%{version}.tar.gz
-Patch0:		LibVNCServer-0.9.9-no_x11vnc.patch
+Url:		http://libvnc.github.io
+Source0:	https://github.com/LibVNC/libvncserver/archive/%{up_name}-%{version}.tar.gz
 Patch1:		LibVNCServer-0.9.9-str-format.patch
-Patch2:		libvncserver-automake-1.13.patch
 BuildRequires:	jpeg-devel
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(x11)
@@ -75,25 +73,13 @@ Provides:	%{name}-devel = %{version}-%{release}
 %description -n %{devname}
 Static libraries and header files for LibVNCServer.
 
-%package -n linuxvnc
-Summary:	VNC server to monitor a text session
-Group:		Networking/Remote access
-
-%description -n linuxvnc
-With linuxvnc you can export your currently running text sessions to any VNC
-client. So it can be useful, if you want to move to another computer without
-having to log out and if you've forgotten to attach a 'screen' session to it,
-or to help a distant colleague to solve a problem.
-
-Based on the ideas of x0rfbserver and on LibVNCServer, it has evolved
-into a versatile and performant while still easy to use program.
-
 %prep
-%setup -qn %{up_name}-%{version}
+%setup -qn %{name}-%{up_name}-%{version}
 %apply_patches
 
 %build
-%configure2_5x --disable-static
+autoreconf -fiv
+%configure2_5x --disable-static --without-libva
 %make
 
 %install
@@ -114,8 +100,4 @@ into a versatile and performant while still easy to use program.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libvncclient.pc
 %{_libdir}/pkgconfig/libvncserver.pc
-
-%files -n linuxvnc
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
-%{_bindir}/linuxvnc
 
