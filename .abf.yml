@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   LibVNCServer-0.9.11.tar.gz: d844a2c9e69465d104a8468dce515a49e4db9585
+sources:
+  LibVNCServer-0.9.12.tar.gz: f2111a7d7e96d7101e7ff3834abd5b0c71c1ed5f
