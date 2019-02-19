@@ -28,7 +28,7 @@ diff -Nru a/libvncclient.pc.cmakein b/libvncclient.pc.cmakein
  prefix=@CMAKE_INSTALL_PREFIX@
  exec_prefix=@CMAKE_INSTALL_PREFIX@
 -libdir=@CMAKE_INSTALL_PREFIX@/lib
-+libdir=@CMAKE_INSTALL_LIBDIR@
++libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
  includedir=@CMAKE_INSTALL_PREFIX@/include
  
  Name: LibVNCClient
@@ -39,7 +39,7 @@ diff -Nru a/libvncserver.pc.cmakein b/libvncserver.pc.cmakein
  prefix=@CMAKE_INSTALL_PREFIX@
  exec_prefix=@CMAKE_INSTALL_PREFIX@
 -libdir=@CMAKE_INSTALL_PREFIX@/lib
-+libdir=@CMAKE_INSTALL_LIBDIR@
++libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
  includedir=@CMAKE_INSTALL_PREFIX@/include
  
  Name: LibVNCServer
