@@ -72,7 +72,7 @@ Static libraries and header files for LibVNCServer.
 
 %prep
 %setup -qn %{name}-%{up_name}-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %cmake -Dlib=%{_lib}
