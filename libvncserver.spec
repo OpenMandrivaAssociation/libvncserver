@@ -6,14 +6,14 @@
 
 Summary:	An easy API to write one's own VNC server
 Name:		libvncserver
-Version:	0.9.12
-Release:	3
+Version:	0.9.13
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://libvnc.github.io
 Source0:	https://github.com/LibVNC/libvncserver/archive/%{up_name}-%{version}.tar.gz
-Patch1:		libvncserver-0.9.12-fix-libraries-path.patch
-Patch2:		CVE-2018-15127.patch
+#Patch1:		libvncserver-0.9.12-fix-libraries-path.patch
+#Patch2:		CVE-2018-15127.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pkgconfig(openssl)
