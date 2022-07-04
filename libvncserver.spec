@@ -7,7 +7,7 @@
 Summary:	An easy API to write one's own VNC server
 Name:		libvncserver
 Version:	0.9.13
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	GPLv2
 Url:		http://libvnc.github.io
@@ -64,8 +64,8 @@ Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libclient} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-BuildRequires:	pkgconfig(zlib)
-BuildRequires:	pkgconfig(libsasl2)
+Requires:	pkgconfig(zlib)
+Requires:	pkgconfig(libsasl2)
 
 %description -n %{devname}
 Static libraries and header files for LibVNCServer.
