@@ -91,5 +91,6 @@ Static libraries and header files for LibVNCServer.
 %files -n %{devname}
 %{_includedir}/rfb
 %{_libdir}/*.so
+%{_libdir}/cmake/LibVNCServer/
 %{_libdir}/pkgconfig/libvncclient.pc
 %{_libdir}/pkgconfig/libvncserver.pc
