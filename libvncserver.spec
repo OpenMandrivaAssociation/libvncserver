@@ -10,7 +10,7 @@ Version:	0.9.14
 Release:	2
 Group:		System/Libraries
 License:	GPLv2
-Url:		http://libvnc.github.io
+Url:		https://libvnc.github.io
 Source0:	https://github.com/LibVNC/libvncserver/archive/%{name}-%{up_name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libjpeg)
