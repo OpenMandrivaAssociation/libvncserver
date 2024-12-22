@@ -6,8 +6,8 @@
 
 Summary:	An easy API to write one's own VNC server
 Name:		libvncserver
-Version:	0.9.14
-Release:	2
+Version:	0.9.15
+Release:	1
 Group:		System/Libraries
 License:	GPLv2
 Url:		https://libvnc.github.io
